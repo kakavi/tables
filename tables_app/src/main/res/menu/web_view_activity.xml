@@ -8,16 +8,34 @@
         android:title="@string/table_manager_title"
         app:showAsAction="always" />-->
 
+  <item
+          android:id="@+id/menu_table_home"
+          android:icon="@drawable/ic_home_black_24dp"
+          android:title="@string/home"
+          app:showAsAction="always" />
+
+  <item
+          android:id="@+id/menu_open_forms"
+          android:icon="@drawable/ic_assignment_black_24dp"
+          android:title="@string/open_forms"
+          app:showAsAction="ifRoom" />
+
+  <item
+          android:id="@+id/menu_table_about"
+          android:icon="@drawable/ic_info_outline_black_24dp"
+          android:title="@string/about"
+          app:showAsAction="never" />
+
     <item
         android:id="@+id/menu_table_manager_sync"
         android:icon="@drawable/ic_cached_black_24dp"
         android:title="@string/sync"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
     <item
         android:id="@+id/menu_table_manager_preferences"
         android:icon="@drawable/ic_settings_black_24dp"
         android:title="@string/preferences"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
 
 <!--
     <item
