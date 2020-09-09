@@ -10,17 +10,29 @@
         app:showAsAction="always" />-->
 
     <item
+            android:id="@+id/menu_table_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/home"
+            app:showAsAction="always" />
+
+    <item
+            android:id="@+id/menu_open_forms"
+            android:icon="@drawable/ic_assignment_black_24dp"
+            android:title="@string/open_forms"
+            app:showAsAction="always" />
+
+    <item
             android:id="@+id/menu_table_manager_sync"
             android:icon="@drawable/ic_cached_black_24dp"
             android:title="@string/sync"
-            app:showAsAction="ifRoom" />
+            app:showAsAction="always" />
 
     <!-- Select a view -->
     <item
         android:id="@+id/top_level_table_menu_select_view"
         android:icon="@drawable/ic_view_headline_black_24dp"
         android:title="@string/select_view"
-        app:showAsAction="always">
+        app:showAsAction="ifRoom">
 
         <!-- View submenu -->
         <menu>
@@ -46,12 +58,6 @@
         android:icon="@drawable/ic_settings_black_24dp"
         android:title="Table Settings"
         app:showAsAction="always" />-->
-
-    <item
-            android:id="@+id/menu_open_maintenance_form"
-            android:icon="@drawable/ic_settings_black_24dp"
-            android:title="@string/open_maintenance"
-            app:showAsAction="never" />
 
     <item
         android:id="@+id/menu_table_manager_preferences"

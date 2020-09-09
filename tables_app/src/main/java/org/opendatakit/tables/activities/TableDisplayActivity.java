@@ -737,11 +737,45 @@ public class TableDisplayActivity extends AbsBaseWebActivity
     Bundle bundle = new Bundle();
     IntentUtil.addAppNameToBundle(bundle, getAppName());
     switch (item.getItemId()) {
+
+      case R.id.menu_table_home:
+        try {
+          Intent i = new Intent(this, MainActivity.class);
+          i.putExtra(IntentConsts.INTENT_KEY_APP_NAME, getAppName());
+          startActivity(i);
+        } catch (Exception e) {
+          WebLogger.getLogger(getAppName()).printStackTrace(e);
+        }
+        return true;
+
+      case R.id.menu_open_forms:
+        try {
+          Intent syncIntent = new Intent();
+          syncIntent.setComponent(
+                  new ComponentName(IntentConsts.Survey.SURVEY_PACKAGE_NAME, IntentConsts.Survey.SURVEY_MAIN_MENU_ACTIVITY_COMPONENT_NAME));
+          syncIntent.setAction(Intent.ACTION_DEFAULT);
+          syncIntent.putExtras(bundle);
+          this.startActivityForResult(syncIntent, RequestCodeConsts.RequestCodes.LAUNCH_MAIN_ACTIVITY);
+        } catch (ActivityNotFoundException e) {
+          WebLogger.getLogger(getAppName()).printStackTrace(e);
+          Toast.makeText(this, R.string.sync_not_found, Toast.LENGTH_LONG).show();
+        }
+      /*WebLogger.getLogger(getAppName()).d(TAG, "[onOptionsItemSelected] add selected");
+      try {
+        ActivityUtil.addRow(this, getAppName(), "monthly_maintenance",  myMap);
+      } catch (ServicesAvailabilityException e) {
+        WebLogger.getLogger(getAppName()).printStackTrace(e);
+        WebLogger.getLogger(getAppName()).e(TAG, "Error while accessing database");
+        Toast.makeText(this, "Error while accessing database", Toast.LENGTH_LONG).show();
+        return true;
+      }*/
+        return true;
+
       case R.id.menu_table_manager_sync:
         try {
           Intent syncIntent = new Intent();
           syncIntent.setComponent(
-                  new ComponentName(IntentConsts.Sync.APPLICATION_NAME, IntentConsts.Sync.ACTIVITY_NAME));
+                  new ComponentName(IntentConsts.Sync.APPLICATION_NAME, "org.opendatakit.services.MainActivity"));
           syncIntent.setAction(Intent.ACTION_DEFAULT);
           syncIntent.putExtras(bundle);
           this.startActivityForResult(syncIntent, RequestCodeConsts.RequestCodes.LAUNCH_SYNC);
@@ -778,17 +812,7 @@ public class TableDisplayActivity extends AbsBaseWebActivity
     case R.id.top_level_table_menu_view_navigate_view:
       setCurrentFragmentType(ViewFragmentType.NAVIGATE, filename, null);
       return true;
-    case R.id.menu_open_maintenance_form:
-      WebLogger.getLogger(getAppName()).d(TAG, "[onOptionsItemSelected] add selected");
-      try {
-        ActivityUtil.addRow(this, getAppName(), "monthly_maintenance",  myMap);
-      } catch (ServicesAvailabilityException e) {
-        WebLogger.getLogger(getAppName()).printStackTrace(e);
-        WebLogger.getLogger(getAppName()).e(TAG, "Error while accessing database");
-        Toast.makeText(this, "Error while accessing database", Toast.LENGTH_LONG).show();
-        return true;
-      }
-      return true;
+
    /* case R.id.top_level_table_menu_table_properties:
       ActivityUtil.launchTableLevelPreferencesActivity(this, this.getAppName(), this.getTableId(),
           TableLevelPreferencesActivity.FragmentType.TABLE_PREFERENCE);

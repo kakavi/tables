@@ -452,11 +452,36 @@ public class MainActivity extends AbsBaseWebActivity
     Bundle bundle = new Bundle();
     IntentUtil.addAppNameToBundle(bundle, appName);
     switch (item.getItemId()) {
+
+      case R.id.menu_table_home:
+        try {
+          Intent i = new Intent(this, MainActivity.class);
+          i.putExtra(IntentConsts.INTENT_KEY_APP_NAME, appName);
+          startActivity(i);
+        } catch (Exception e) {
+          WebLogger.getLogger(getAppName()).printStackTrace(e);
+        }
+        return true;
+
+      case R.id.menu_open_forms:
+        try {
+          Intent syncIntent = new Intent();
+          syncIntent.setComponent(
+                  new ComponentName(IntentConsts.Survey.SURVEY_PACKAGE_NAME, IntentConsts.Survey.SURVEY_MAIN_MENU_ACTIVITY_COMPONENT_NAME));
+          syncIntent.setAction(Intent.ACTION_DEFAULT);
+          syncIntent.putExtras(bundle);
+          this.startActivityForResult(syncIntent, RequestCodeConsts.RequestCodes.LAUNCH_MAIN_ACTIVITY);
+        } catch (ActivityNotFoundException e) {
+          WebLogger.getLogger(appName).printStackTrace(e);
+          Toast.makeText(this, R.string.sync_not_found, Toast.LENGTH_LONG).show();
+        }
+        return true;
+
       case R.id.menu_table_manager_sync:
         try {
           Intent syncIntent = new Intent();
           syncIntent.setComponent(
-                  new ComponentName(IntentConsts.Sync.APPLICATION_NAME, IntentConsts.Sync.ACTIVITY_NAME));
+                  new ComponentName(IntentConsts.Sync.APPLICATION_NAME, "org.opendatakit.services.MainActivity"));
           syncIntent.setAction(Intent.ACTION_DEFAULT);
           syncIntent.putExtras(bundle);
           this.startActivityForResult(syncIntent, RequestCodeConsts.RequestCodes.LAUNCH_SYNC);
@@ -471,6 +496,7 @@ public class MainActivity extends AbsBaseWebActivity
     case R.id.menu_table_about:
       swapScreens(ScreenType.ABOUT_SCREEN);
       return true;*/
+
     case R.id.menu_table_manager_preferences:
       Intent preferenceIntent = new Intent();
       preferenceIntent.setComponent(new ComponentName(IntentConsts.AppProperties.APPLICATION_NAME,
