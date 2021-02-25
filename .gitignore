@@ -5,3 +5,5 @@ local.properties
 *.iml
 tables_app/fabric.properties
 odkanalytics/
+tables_app/androidlibrary/
+tables_app/src/main/java/org/opendatakit/tables/jobs/

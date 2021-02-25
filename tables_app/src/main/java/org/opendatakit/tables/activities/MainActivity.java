@@ -463,7 +463,7 @@ public class MainActivity extends AbsBaseWebActivity
         }
         return true;
 
-      case R.id.menu_open_forms:
+/*      case R.id.menu_open_forms:
         try {
           Intent syncIntent = new Intent();
           syncIntent.setComponent(
@@ -475,7 +475,7 @@ public class MainActivity extends AbsBaseWebActivity
           WebLogger.getLogger(appName).printStackTrace(e);
           Toast.makeText(this, R.string.sync_not_found, Toast.LENGTH_LONG).show();
         }
-        return true;
+        return true;*/
 
       case R.id.menu_table_manager_sync:
         try {
