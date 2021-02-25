@@ -748,7 +748,7 @@ public class TableDisplayActivity extends AbsBaseWebActivity
         }
         return true;
 
-      case R.id.menu_open_forms:
+/*      case R.id.menu_open_forms:
         try {
           Intent syncIntent = new Intent();
           syncIntent.setComponent(
@@ -760,6 +760,7 @@ public class TableDisplayActivity extends AbsBaseWebActivity
           WebLogger.getLogger(getAppName()).printStackTrace(e);
           Toast.makeText(this, R.string.sync_not_found, Toast.LENGTH_LONG).show();
         }
+        return true;*/
       /*WebLogger.getLogger(getAppName()).d(TAG, "[onOptionsItemSelected] add selected");
       try {
         ActivityUtil.addRow(this, getAppName(), "monthly_maintenance",  myMap);
@@ -768,8 +769,8 @@ public class TableDisplayActivity extends AbsBaseWebActivity
         WebLogger.getLogger(getAppName()).e(TAG, "Error while accessing database");
         Toast.makeText(this, "Error while accessing database", Toast.LENGTH_LONG).show();
         return true;
-      }*/
-        return true;
+      }
+        return true;*/
 
       case R.id.menu_table_manager_sync:
         try {

@@ -8,11 +8,11 @@
             android:title="@string/home"
             app:showAsAction="always" />
 
-    <item
+  <!--  <item
             android:id="@+id/menu_open_forms"
             android:icon="@drawable/ic_assignment_black_24dp"
             android:title="@string/open_forms"
-            app:showAsAction="always" />
+            app:showAsAction="always" />-->
 
     <item
         android:id="@+id/menu_table_manager_sync"
